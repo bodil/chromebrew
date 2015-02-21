@@ -11,6 +11,7 @@ class Pango < Package
   depends_on 'fontconfig'
   depends_on 'freetype'
   depends_on 'cairo'
+  depends_on 'gobject_introspection'
   
   def self.build
     system "./configure"

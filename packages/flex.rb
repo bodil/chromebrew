@@ -1,12 +1,11 @@
 require 'package'
 
-class Bison < Package
-  version '3.0.4'
-  source_url 'http://ftp.gnu.org/gnu/bison/bison-3.0.4.tar.xz'
-  source_sha1 '8270497aad88c7dd4f2c317298c50513fb0c3c8e'
+class Flex < Package
+  version '2.5.39'
+  source_url 'http://prdownloads.sourceforge.net/project/flex/flex-2.5.39.tar.xz'
+  source_sha1 '415e82bb0dc9b1713fc4802a9db2274cd8d2909a'
 
   depends_on 'buildessential'
-  depends_on 'flex'
   
   def self.build
     system "./configure"

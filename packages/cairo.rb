@@ -13,9 +13,11 @@ class Cairo < Package
   depends_on 'fontconfig'
   depends_on 'libxcb'
   depends_on 'glib'
+  depends_on 'libx11'
+  depends_on 'libsm'
   
   def self.build
-    system "./configure --enable-xlib=no --enable-xcb=yes"
+    system "./configure --enable-xlib=yes --enable-xcb=yes"
     system "make"
   end
   

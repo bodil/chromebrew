@@ -1,12 +1,11 @@
 require 'package'
 
-class Bison < Package
-  version '3.0.4'
-  source_url 'http://ftp.gnu.org/gnu/bison/bison-3.0.4.tar.xz'
-  source_sha1 '8270497aad88c7dd4f2c317298c50513fb0c3c8e'
+class Giflib < Package
+  version '5.1.1'
+  source_url 'http://prdownloads.sourceforge.net/giflib/5.1.1/giflib-5.1.1.tar.bz2'
+  source_sha1 'e5d716e0ccef671103c38c25693927e413fac639'
 
   depends_on 'buildessential'
-  depends_on 'flex'
   
   def self.build
     system "./configure"
