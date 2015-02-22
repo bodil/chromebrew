@@ -1,13 +1,19 @@
 require 'package'
 
 class Perl < Package
-  version '5.16.3'
-  binary_url ({
-    i686: 'https://dl.dropboxusercontent.com/s/qwbwhvqed0yyv3l/perl-5.16.3-chromeos-i686.tar.gz?token_hash=AAHjq1OrZ3iNYerA9y6QIPtsn3fOnW5QeIFbYlBbBN-OkA&dl=1',
-    x86_64: 'https://dl.dropboxusercontent.com/s/gg2q9tsvy2ybf80/perl-5.18.1-chromeos-x86_64.tar.gz?token_hash=AAFbAeYB604esg7FRBM_TeBh2hiDg2Bw8eZfPHFH8zCdHw&dl=1'
-  })
-  binary_sha1 ({
-    i686: 'e2a8c5280b8a4abec70256f41d5e5b04253d6796',
-    x86_64: '5bf7c1762499a40f2ce8684be6f5699c6a4658e1'
-  })
+  version '5.20.1'
+  source_url 'http://www.cpan.org/src/5.0/perl-5.20.1.tar.gz'
+  source_sha1 'dad920583cab07e96bb8860a70eebc5fa9cf8e4d'
+
+  depends_on 'buildessential'
+
+  def self.build
+    system "./Configure -des -Dusethreads -Duseshrplib -Dprefix=/usr/local -Dvendorprefix=/usr/local -Dlddlflags='-shared' -Dcccdlflags='-fPIC' -Dcc=gcc -Dprivlib=/usr/local/share/perl5/core_perl -Darchlib=/usr/local/lib/perl5/core_perl -Dsitelib=/usr/local/share/perl5/site_perl -Dsitearch=/usr/local/lib/perl5/site_perl -Dvendorlib=/usr/local/share/perl5/vendor_perl -Dvendorarch=/usr/local/lib/perl5/vendor_perl -Dscriptdir=/usr/local/bin/core_perl -Dsitescript=/usr/local/bin/site_perl -Dvendorscript=/usr/local/bin/vendor_perl"
+    system "make"
+  end
+
+  def self.install
+    system "make DESTDIR=#{CREW_DEST_DIR} install"
+    system "rm #{CREW_DEST_DIR}/*.0"
+  end
 end
