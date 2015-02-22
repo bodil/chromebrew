@@ -10,7 +10,7 @@ class Libpcre < Package
   depends_on 'bz2'
   
   def self.build
-    system "./configure"
+    system "./configure --enable-unicode-properties"
     system "make"
   end
   
